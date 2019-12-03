@@ -16,8 +16,6 @@
 #define OBSTACLE_SIZE 35
 
 unsigned char currentScore;
-//unsigned char inMenu;
-
 unsigned char obstacle[OBSTACLE_SIZE] = {
     0x20, 0x20, 0x01, 0x20, 0x20, 
     0x20, 0x20, 0x20, 0x01, 0x20, 
@@ -63,8 +61,7 @@ int gameTick(int state)
     static unsigned char crosshairPos;
     static unsigned char highScore;
     unsigned char i;
-
-    // transitions
+    
     switch(state)
     {
         case SC_START: state = SC_INIT; break;
@@ -86,7 +83,6 @@ int gameTick(int state)
         }
         case SCROLL: 
         {
-            // start button is same as reset
             if(start) 
             {
                 state = RESET_HELD; 
@@ -142,7 +138,6 @@ int gameTick(int state)
             {
                 LCD_ClearScreen();
 
-                // redraw player
                 LCD_Cursor(1);
                 LCD_WriteData(PL_STATIONARY);
 
@@ -176,8 +171,7 @@ int gameTick(int state)
             }
         }
     }
-
-    // actions
+    
     switch(state)
     {
         case SC_START: break;
